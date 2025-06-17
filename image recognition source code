@@ -1,0 +1,13 @@
+import PIL.Image
+import PIL.ImageDraw
+import face_recognition
+picture=face_recognition.load_image_file("     ") #image location
+face_locations=face_recognition.face_locations(picture)
+num=len(face_locations)
+print("python recognize {} faces".format(num))
+pil_picture=PIL.Image.fromarray(picture)
+draw_picture=PIL.ImageDraw.Draw(pil_picture)
+for faces in face_locations:
+    top,right,bottom,left=faces
+    draw_picture.rectangle([left, top, right, bottom],outline="green",width=4)
+pil_picture.show()
